@@ -104,12 +104,12 @@ html, body {
     display: flex;
     flex: 1;
     height: calc(100vh - 100px);
-    gap: 20px; /* space between reports */
+    gap: 20px;
     padding: 20px;
-    justify-content: center; /* center narrower reports */
+    justify-content: center;
 }
 .report-container {
-    flex: 0 0 45%; /* reduce width to 45% each */
+    flex: 0 0 45%; /* narrower width */
     display: flex;
     flex-direction: column;
     background: rgba(31, 31, 31, 0.85);
@@ -117,9 +117,12 @@ html, body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-height: 750px; /* increase height */
+    max-height: 750px; /* taller */
 }
-
+.report-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
 iframe {
     border: none;
     width: 100%;
@@ -134,13 +137,27 @@ h2 {
     text-align: center;
 }
 
+/* Responsive for tablets and phones */
 @media (max-width: 900px) {
     .dashboard {
         flex-direction: column;
         height: auto;
+        gap: 15px;
+        padding: 15px;
+        align-items: center;
     }
     .report-container {
-        height: 400px;
+        flex: 0 0 95%;
+        max-height: 500px;
+    }
+    .flip-clock .flip-digit {
+        width: 45px;
+        height: 60px;
+        font-size: 28px;
+        line-height: 60px;
+    }
+    #today-date {
+        font-size: 16px;
     }
 }
 </style>
@@ -206,8 +223,15 @@ tsParticles.load("tsparticles", {
 });
 
 // Auto-refresh reports every 15 minutes
-setInterval(()=>{document.getElementById('looker1').src += '';}, 900000);
-setInterval(()=>{document.getElementById('looker2').src += '';}, 900000);
+setInterval(()=>{
+    const iframe1 = document.getElementById('looker1');
+    iframe1.src = iframe1.src.split('?')[0] + '?t=' + new Date().getTime();
+}, 900000);
+
+setInterval(()=>{
+    const iframe2 = document.getElementById('looker2');
+    iframe2.src = iframe2.src.split('?')[0] + '?t=' + new Date().getTime();
+}, 900000);
 
 // Update Date
 function updateDate() {
