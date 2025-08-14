@@ -11,13 +11,28 @@
             background: #f0f0f0; /* continuous background */
             font-family: Arial, sans-serif;
         }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+        .top-bar h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .top-bar .time {
+            font-size: 16px;
+        }
         .dashboard {
             display: flex;
-            height: 100vh; /* full viewport height */
+            height: calc(100vh - 50px); /* full height minus top bar */
         }
         .report-container {
             flex: 1; /* equal width for both reports */
-            margin: 5px; /* small gap between reports */
+            margin: 5px;
             display: flex;
             flex-direction: column;
         }
@@ -29,39 +44,45 @@
         h2 {
             margin: 0;
             padding: 10px;
-            background: #333;
+            background: #555;
             color: white;
             font-size: 18px;
             text-align: center;
+        }
+        .calendar {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
     </style>
     <script>
         // Auto-refresh each report every 15 minutes (900000 ms)
         setInterval(() => { document.getElementById('looker1').src += ''; }, 900000);
         setInterval(() => { document.getElementById('looker2').src += ''; }, 900000);
+
+        // Update PH time every second
+        function updateTime() {
+            const now = new Date();
+            const phTime = now.toLocaleString("en-PH", {timeZone: "Asia/Manila", hour12: false});
+            document.getElementById("ph-time").textContent = phTime;
+        }
+        setInterval(updateTime, 1000);
     </script>
 </head>
-<body>
+<body onload="updateTime()">
 
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <h1>📊 Live Dashboard</h1>
+        <div class="time" id="ph-time"></div>
+    </div>
+
+    <!-- Dashboard -->
     <div class="dashboard">
         <div class="report-container">
             <h2>📊 Report 1</h2>
             <iframe 
-                id="looker1"
-                src="https://lookerstudio.google.com/embed/reporting/b91b3733-131d-41b1-9fd2-b4faff346716/page/B0VUF" 
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <div class="report-container">
-            <h2>📊 Report 2</h2>
-            <iframe 
-                id="looker2"
-                src="https://lookerstudio.google.com/embed/reporting/21fc4ba8-58a5-4d84-b56d-ec0e74b8ae18/page/WfMUF" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-
-</body>
-</html>
+                id="looker
