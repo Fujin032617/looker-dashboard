@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            background: #f0f0f0; /* continuous background */
+            background: #f0f0f0;
             font-family: Arial, sans-serif;
         }
         .top-bar {
@@ -28,11 +28,13 @@
         }
         .dashboard {
             display: flex;
+            flex: 1;
             height: calc(100vh - 50px); /* full height minus top bar */
+            gap: 10px; /* small gap between reports */
+            padding: 5px;
         }
         .report-container {
-            flex: 1; /* equal width for both reports */
-            margin: 5px;
+            flex: 1;
             display: flex;
             flex-direction: column;
         }
@@ -50,12 +52,17 @@
             text-align: center;
         }
         .calendar {
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            background: white;
-            padding: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            position: relative;
+            margin-left: 10px;
+        }
+        @media (max-width: 900px) {
+            .dashboard {
+                flex-direction: column;
+                height: auto;
+            }
+            .report-container {
+                height: 400px;
+            }
         }
     </style>
     <script>
@@ -77,7 +84,12 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <h1>📊 Live Dashboard</h1>
-        <div class="time" id="ph-time"></div>
+        <div style="display:flex; align-items:center;">
+            <div class="calendar">
+                <input type="date" id="calendar">
+            </div>
+            <div class="time" id="ph-time" style="margin-left: 20px;"></div>
+        </div>
     </div>
 
     <!-- Dashboard -->
@@ -85,4 +97,21 @@
         <div class="report-container">
             <h2>📊 Report 1</h2>
             <iframe 
-                id="looker
+                id="looker1"
+                src="https://lookerstudio.google.com/embed/reporting/b91b3733-131d-41b1-9fd2-b4faff346716/page/B0VUF" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="report-container">
+            <h2>📊 Report 2</h2>
+            <iframe 
+                id="looker2"
+                src="https://lookerstudio.google.com/embed/reporting/21fc4ba8-58a5-4d84-b56d-ec0e74b8ae18/page/WfMUF" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+</body>
+</html>
