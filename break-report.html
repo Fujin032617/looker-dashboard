@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Detailed Break Report</title>
+<style>
+/* --- General Body & Typography --- */
+html, body { 
+    margin:0; 
+    padding:0; 
+    height:100%; 
+    background:#121212; 
+    font-family:Arial,sans-serif; 
+    color:white; 
+    overflow-x:hidden; 
+}
+/* --- Top Bar & Navigation --- */
+.top-bar { 
+    position:relative; 
+    z-index:1; 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    background:#1f1f1f; 
+    padding:5px 15px; 
+    box-shadow:0 2px 10px rgba(0,0,0,0.5); 
+}
+.top-bar .left-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.top-bar h1 { 
+    margin:0; 
+    font-size:16px; 
+}
+.nav-bar { 
+    display:flex; 
+    gap:10px; 
+}
+.nav-bar a { 
+    color:#00ffcc; 
+    text-decoration:none; 
+    font-weight:bold; 
+    padding:8px 15px; 
+    border-radius:50px; 
+    transition:background-color 0.3s ease, transform 0.3s ease; 
+}
+.nav-bar a:hover { 
+    background-color:rgba(0, 255, 204, 0.1); 
+    transform:scale(1.05); 
+}
+.nav-bar a.active { 
+    background-color:#00ffcc; 
+    color:#121212; 
+    box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc; 
+}
+.top-bar .right-content {
+    text-align: right;
+}
+
+/* --- Flip Clock & Date (New) --- */
+.flip-clock {
+    display:flex;
+    gap:6px;
+    align-items:center;
+}
+.flip-digit {
+    position:relative;
+    width:40px;
+    height:60px;
+    background:#222;
+    border-radius:6px;
+    overflow:hidden;
+    perspective:1000px;
+    box-shadow:0 0 8px #00ffcc;
+}
+.flip-digit span {
+    display:block;
+    width:100%;
+    height:100%;
+    line-height:60px;
+    font-size:26px;
+    font-weight:bold;
+    text-align:center;
+    color:#00ffcc;
+    background:#222;
+    backface-visibility:hidden;
+    position:absolute;
+    top:0;
+    left:0;
+    transform-origin:top;
+    text-shadow:0 0 6px #00ffcc,0 0 14px #00ffcc;
+}
+.flip-digit span.back {
+    transform:rotateX(180deg);
+}
+.flip-digit.flip span.front {
+    animation:flipFront 0.5s forwards;
+}
+.flip-digit.flip span.back {
+    animation:flipBack 0.5s forwards;
+}
+@keyframes flipFront {
+    0% { transform: rotateX(0deg); }
+    100% { transform: rotateX(-180deg); }
+}
+@keyframes flipBack {
+    0% { transform: rotateX(180deg); }
+    100% { transform: rotateX(0deg); }
+}
+#today-date {
+    font-size:16px;
+    color:#00ffcc;
+    text-shadow:0 0 6px #00ffcc,0 0 14px #00ffcc;
+    margin-bottom:2px;
+}
+
+/* --- Marquee (New) --- */
+#breakMarqueeContainer {
+    width:100%;
+    overflow:hidden;
+    background:#1f1f1f;
+    padding:4px 0;
+    box-shadow:0 2px 6px rgba(0,0,0,0.5);
+    z-index:1;
+}
+#breakMarquee {
+    display:inline-block;
+    white-space:nowrap;
+    font-weight:bold;
+    text-shadow:0 0 6px #ffcc00,0 0 12px #ffcc00;
+    will-change:transform;
+    animation:marquee 20s linear infinite;
+}
+@keyframes marquee {
+    0% { transform:translateX(100%); }
+    100% { transform:translateX(-100%); }
+}
+
+/* --- Main Report Dashboard & Cards --- */
+.dashboard-grid { 
+    display: grid; 
+    gap: 20px; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    padding: 20px; 
+}
+.report-card { 
+    background: rgba(31, 31, 31, 0.85); 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+.report-card h3 { 
+    margin-top: 0; 
+    color: #4CAF50; 
+    border-bottom: 2px solid #333; 
+    padding-bottom: 10px; 
+}
+.report-card p { 
+    margin: 5px 0; 
+    font-size: 16px; 
+}
+.report-card ul { 
+    list-style: none; 
+    padding: 0; 
+}
+.report-card li { 
+    background: #2a2a2a; 
+    padding: 10px; 
+    border-radius: 4px; 
+    margin-bottom: 5px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.report-card li:last-child { 
+    margin-bottom: 0; 
+}
+.on-time { 
+    color: #4CAF50; 
+    font-weight: bold; 
+}
+.over-break { 
+    color: #FF6347; 
+    font-weight: bold; 
+}
+.data-value { 
+    font-weight: bold; 
+}
+.loading-message { 
+    text-align: center; 
+    color: #888; 
+    font-size: 18px; 
+    padding: 50px; 
+}
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .dashboard-grid { 
+        grid-template-columns: 1fr; 
+        padding: 10px; 
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="left-content">
+        <h1>📊 Detailed Break Report</h1>
+        <div class="nav-bar">
+            <a href="index.html">Home</a>
+            <a href="break-report.html" class="active">Break Report</a>
+        </div>
+    </div>
+    <div class="right-content">
+        <div id="today-date"></div>
+        <div class="flip-clock" id="flipClock"></div>
+    </div>
+</div>
+
+<div id="breakMarqueeContainer">
+    <div id="breakMarquee">Loading break data...</div>
+</div>
+
+<div id="dashboard" class="dashboard-grid">
+    <div class="loading-message">Loading reports...</div>
+</div>
+
+<script>
+    const BREAK_REPORT_URL = "https://script.google.com/macros/s/AKfycbyDed2ow2MMBjz2jXTZWzBV_PKNSDUEfajEF1qwnww6QK-DKYKBlYqWgStHVSpjmGKM/exec";
+    const MARQUEE_URL = "https://script.google.com/macros/s/AKfycbzteR_7lMnSwl6QS8eHR63kvsneAsiO4gPc4GXmRo-1_IIkNdKnoSYO_qLX8k_LAmlf/exec";
+
+    // --- Break Report Functions ---
+    async function loadBreakReports() {
+        const dashboard = document.getElementById("dashboard");
+        dashboard.innerHTML = '<div class="loading-message">Loading reports...</div>';
+
+        try {
+            const res = await fetch(BREAK_REPORT_URL);
+            const allReports = await res.json();
+
+            // Render Daily Summary
+            let summaryHtml = `
+                <div class="report-card">
+                    <h3>Daily Break Adherence Summary</h3>
+                    <p>Total Breaks Taken: <span class="data-value">${allReports.dailySummary.totalBreaks}</span></p>
+                    <p>On-Time Breaks: <span class="on-time data-value">${allReports.dailySummary.onTimeBreaks} (${allReports.dailySummary.onTimePercentage}%)</span></p>
+                    <p>Over Breaks: <span class="over-break data-value">${allReports.dailySummary.overBreaks} (${allReports.dailySummary.overBreakPercentage}%)</span></p>
+                    <p>Average Break Duration: <span class="data-value">${allReports.dailySummary.averageBreakDuration} mins</span></p>
+                </div>
+            `;
+
+            // Render Employee Performance Report
+            let employeeHtml = `
+                <div class="report-card">
+                    <h3>Employee Performance Report</h3>
+                    <ul>`;
+            for (const [name, stats] of Object.entries(allReports.employeePerformance)) {
+                employeeHtml += `<li>
+                    <span><strong>${name}</strong></span>
+                    <span>Breaks: ${stats.totalBreaks} | Over: ${stats.overBreaks} | Avg Over: ${stats.averageOverBreakDuration} mins</span>
+                </li>`;
+            }
+            employeeHtml += `</ul></div>`;
+
+            // Render Break Trend Analysis
+            let trendsHtml = `
+                <div class="report-card">
+                    <h3>Break Trend Analysis</h3>
+                    <p>Average Duration by Break Type:</p>
+                    <ul>`;
+            for (const [type, stats] of Object.entries(allReports.breakTrends.breakTypeBreakdown)) {
+                trendsHtml += `<li><span><strong>${type}:</strong></span> <span class="data-value">${stats.averageDuration} mins</span></li>`;
+            }
+            trendsHtml += `</ul></div>`;
+
+            dashboard.innerHTML = summaryHtml + employeeHtml + trendsHtml;
+
+        } catch (e) {
+            console.error("Error loading data:", e);
+            dashboard.innerHTML = '<div class="loading-message over-break">Error loading data. Check the script URL and permissions.</div>';
+        }
+    }
+    
+    // --- Marquee & Clock Functions (Copied from index.html) ---
+    function createFlipDigit(){const digit=document.createElement('div');digit.className='flip-digit';const front=document.createElement('span'); front.className='front'; front.textContent='0'; const back=document.createElement('span'); back.className='back'; back.textContent='0'; digit.appendChild(front); digit.appendChild(back); return digit;}
+    const clockContainer=document.getElementById('flipClock');const digits=[];for(let i=0;i<4;i++){const digit=createFlipDigit(); clockContainer.appendChild(digit); if(i===1){const colon=document.createElement('span'); colon.textContent=':'; colon.style.margin='0 4px'; colon.style.fontSize='26px'; colon.style.color='#00ffcc'; colon.style.textShadow='0 0 6px #00ffcc,0 0 14px #00ffcc'; clockContainer.appendChild(colon);} digits.push(digit);}
+    function updateClock(){const now=new Date(); let options={timeZone:'Asia/Manila',hour12:false,hour:'2-digit',minute:'2-digit'}; let timeStr=now.toLocaleTimeString('en-PH',options).replace(':',''); for(let i=0;i<digits.length;i++){const digitEl=digits[i]; const front=digitEl.querySelector('.front'); const back=digitEl.querySelector('.back'); if(front.textContent!==timeStr[i]){back.textContent=timeStr[i]; digitEl.classList.add('flip'); setTimeout(()=>{front.textContent=timeStr[i]; digitEl.classList.remove('flip');},500);}}}
+    function updateDate(){
+        const now=new Date();
+        const options={timeZone:'Asia/Manila',weekday:'long',year:'numeric',month:'long',day:'numeric'};
+        document.getElementById('today-date').textContent=now.toLocaleDateString('en-PH',options);
+    }
+    async function updateMarquee(){
+        try{
+            const res=await fetch(MARQUEE_URL);
+            let msg=await res.text();
+            const marqueeEl=document.getElementById("breakMarquee");
+            if(msg.toUpperCase().includes("OVERBREAK")){
+                marqueeEl.style.color="#ff4444";
+                marqueeEl.textContent="⚠️ "+msg;
+            }else{
+                marqueeEl.style.color="#ffcc00";
+                marqueeEl.textContent=msg;
+            }
+        }catch(e){
+            document.getElementById("breakMarquee").textContent="Error loading break data.";
+            console.error(e);
+        }
+    }
+    
+    // --- Initial Load and Interval Triggers ---
+    loadBreakReports();
+    updateDate();
+    updateClock();
+    updateMarquee();
+    
+    setInterval(loadBreakReports, 30000); // Refreshes the break reports every 30 seconds
+    setInterval(updateDate,60000); // Updates the date every minute
+    setInterval(updateClock,1000); // Updates the clock every second
+    setInterval(updateMarquee,30000); // Refreshes the marquee every 30 seconds
+</script>
+
+</body>
+</html>
