@@ -3,60 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <title>Detailed Break Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* --- General Body & Typography --- */
-html, body { 
-    margin:0; 
-    padding:0; 
-    height:100%; 
-    background:#121212; 
-    font-family:Arial,sans-serif; 
-    color:white; 
-    overflow-x:hidden; 
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+    background: linear-gradient(270deg, #121212, #0d0d1a);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+    font-family: 'Poppins', sans-serif;
+    color:white;
+    overflow-x:hidden;
 }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 /* --- Top Bar & Navigation --- */
-.top-bar { 
-    position:relative; 
-    z-index:1; 
-    display:flex; 
-    justify-content:space-between; 
-    align-items:center; 
-    background:#1f1f1f; 
-    padding:5px 15px; 
-    box-shadow:0 2px 10px rgba(0,0,0,0.5); 
+.top-bar {
+    position:relative;
+    z-index:1;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#1f1f1f;
+    padding:5px 15px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.5);
 }
 .top-bar .left-content {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-.top-bar h1 { 
-    margin:0; 
-    font-size:16px; 
+.top-bar h1 {
+    margin:0;
+    font-size:16px;
 }
-.nav-bar { 
-    display:flex; 
-    gap:10px; 
+.nav-bar {
+    display:flex;
+    gap:10px;
 }
-.nav-bar a { 
-    color:#00ffcc; 
-    text-decoration:none; 
-    font-weight:bold; 
-    padding:8px 15px; 
-    border-radius:50px; 
-    transition:background-color 0.3s ease, transform 0.3s ease; 
+.nav-bar a {
+    color:#00ffcc;
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 15px;
+    border-radius:50px;
+    transition:background-color 0.3s ease, transform 0.3s ease;
 }
-.nav-bar a:hover { 
-    background-color:rgba(0, 255, 204, 0.1); 
-    transform:scale(1.05); 
+.nav-bar a:hover {
+    background-color:rgba(0, 255, 204, 0.1);
+    transform:scale(1.05);
 }
-.nav-bar a.active { 
-    background-color:#00ffcc; 
-    color:#121212; 
-    box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc; 
+.nav-bar a.active {
+    background-color:#00ffcc;
+    color:#121212;
+    box-shadow:0 0 10px #00ffcc, 0 0 20px #00ffcc;
 }
 .top-bar .right-content {
     text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+/* --- Overbreak Counter --- */
+#overbreak-counter {
+    font-size: 16px;
+    font-weight: bold;
+    color: #00ffcc;
+    text-shadow: 0 0 6px #00ffcc, 0 0 14px #00ffcc;
+    padding: 8px 15px;
+    background: #222;
+    border-radius: 50px;
+}
+.overbreak-count-alert {
+    color: #ff4444 !important;
+    text-shadow: 0 0 6px #ff4444, 0 0 14px #ff4444;
 }
 
 /* --- Flip Clock & Date (New) --- */
@@ -138,67 +166,108 @@ html, body {
     100% { transform:translateX(-100%); }
 }
 
+/* --- New: Filters Container --- */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    background: #1f1f1f;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    flex-wrap: wrap;
+    align-items: center;
+}
+.filters label, .filters input, .filters select, .filters button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: white;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+.filters button {
+    cursor: pointer;
+    background: #00ffcc;
+    color: #121212;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.filters button:hover {
+    background: #00e0b3;
+}
+
 /* --- Main Report Dashboard & Cards --- */
-.dashboard-grid { 
-    display: grid; 
-    gap: 20px; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    padding: 20px; 
+.dashboard-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 20px;
 }
-.report-card { 
-    background: rgba(31, 31, 31, 0.85); 
-    padding: 20px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+.report-card {
+    background: rgba(31, 31, 31, 0.85);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
-.report-card h3 { 
-    margin-top: 0; 
-    color: #4CAF50; 
-    border-bottom: 2px solid #333; 
-    padding-bottom: 10px; 
+.report-card.overbreak-alert {
+    border: 2px solid #ff4444;
+    animation: overbreakGlow 1.5s infinite alternate ease-in-out;
 }
-.report-card p { 
-    margin: 5px 0; 
-    font-size: 16px; 
+@keyframes overbreakGlow {
+    from { box-shadow: 0 0 5px #ff4444, 0 0 10px #ff4444; }
+    to { box-shadow: 0 0 15px #ff4444, 0 0 25px #ff4444; }
 }
-.report-card ul { 
-    list-style: none; 
-    padding: 0; 
+.report-card h3 {
+    margin-top: 0;
+    color: #4CAF50;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
 }
-.report-card li { 
-    background: #2a2a2a; 
-    padding: 10px; 
-    border-radius: 4px; 
-    margin-bottom: 5px; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+.report-card p {
+    margin: 5px 0;
+    font-size: 16px;
 }
-.report-card li:last-child { 
-    margin-bottom: 0; 
+.report-card ul {
+    list-style: none;
+    padding: 0;
 }
-.on-time { 
-    color: #4CAF50; 
-    font-weight: bold; 
+.report-card li {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.over-break { 
-    color: #FF6347; 
-    font-weight: bold; 
+.report-card li:last-child {
+    margin-bottom: 0;
 }
-.data-value { 
-    font-weight: bold; 
+.on-time {
+    color: #4CAF50;
+    font-weight: bold;
 }
-.loading-message { 
-    text-align: center; 
-    color: #888; 
-    font-size: 18px; 
-    padding: 50px; 
+.over-break {
+    color: #FF6347;
+    font-weight: bold;
+}
+.data-value {
+    font-weight: bold;
+}
+.loading-message {
+    text-align: center;
+    color: #888;
+    font-size: 18px;
+    padding: 50px;
 }
 /* --- Responsive --- */
 @media (max-width: 900px) {
-    .dashboard-grid { 
-        grid-template-columns: 1fr; 
-        padding: 10px; 
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
     }
 }
 </style>
@@ -214,6 +283,7 @@ html, body {
         </div>
     </div>
     <div class="right-content">
+        <span id="overbreak-counter">Overbreaks: 0</span>
         <div id="today-date"></div>
         <div class="flip-clock" id="flipClock"></div>
     </div>
@@ -221,6 +291,14 @@ html, body {
 
 <div id="breakMarqueeContainer">
     <div id="breakMarquee">Loading break data...</div>
+</div>
+
+<div class="filters">
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date">
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date">
+    <button onclick="applyFilters()">Apply Filters</button>
 </div>
 
 <div id="dashboard" class="dashboard-grid">
@@ -231,27 +309,57 @@ html, body {
     const BREAK_REPORT_URL = "https://script.google.com/macros/s/AKfycbyDed2ow2MMBjz2jXTZWzBV_PKNSDUEfajEF1qwnww6QK-DKYKBlYqWgStHVSpjmGKM/exec";
     const MARQUEE_URL = "https://script.google.com/macros/s/AKfycbzteR_7lMnSwl6QS8eHR63kvsneAsiO4gPc4GXmRo-1_IIkNdKnoSYO_qLX8k_LAmlf/exec";
 
-    // --- Break Report Functions ---
+    function getFormattedDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    function setInitialDates() {
+        const today = new Date();
+        const formattedToday = getFormattedDate(today);
+        document.getElementById('start-date').value = formattedToday;
+        document.getElementById('end-date').value = formattedToday;
+    }
+
     async function loadBreakReports() {
         const dashboard = document.getElementById("dashboard");
         dashboard.innerHTML = '<div class="loading-message">Loading reports...</div>';
 
+        const startDate = document.getElementById('start-date').value;
+        const endDate = document.getElementById('end-date').value;
+
+        let filteredURL = BREAK_REPORT_URL;
+        const params = new URLSearchParams();
+        if (startDate) params.append('startDate', startDate);
+        if (endDate) params.append('endDate', endDate);
+        if (params.toString()) filteredURL += '?' + params.toString();
+        
         try {
-            const res = await fetch(BREAK_REPORT_URL);
+            const res = await fetch(filteredURL);
             const allReports = await res.json();
 
-            // Render Daily Summary
-            let summaryHtml = `
-                <div class="report-card">
-                    <h3>Daily Break Adherence Summary</h3>
-                    <p>Total Breaks Taken: <span class="data-value">${allReports.dailySummary.totalBreaks}</span></p>
-                    <p>On-Time Breaks: <span class="on-time data-value">${allReports.dailySummary.onTimeBreaks} (${allReports.dailySummary.onTimePercentage}%)</span></p>
-                    <p>Over Breaks: <span class="over-break data-value">${allReports.dailySummary.overBreaks} (${allReports.dailySummary.overBreakPercentage}%)</span></p>
-                    <p>Average Break Duration: <span class="data-value">${allReports.dailySummary.averageBreakDuration} mins</span></p>
-                </div>
+            const dailySummaryCard = document.createElement('div');
+            dailySummaryCard.className = 'report-card';
+            const overbreakPercentage = parseFloat(allReports.dailySummary.overBreakPercentage);
+            if (overbreakPercentage >= 30) {
+                dailySummaryCard.classList.add('overbreak-alert');
+            } else {
+                dailySummaryCard.classList.remove('overbreak-alert');
+            }
+
+            const alertNote = overbreakPercentage >= 30 ? '<br><small style="color:red; font-weight:bold;">* The card turns red when the daily overbreak percentage is 30% or higher.</small>' : '';
+
+            dailySummaryCard.innerHTML = `
+                <h3>Daily Break Adherence Summary</h3>
+                <p>Total Breaks Taken: <span class="data-value">${allReports.dailySummary.totalBreaks}</span></p>
+                <p>On-Time Breaks: <span class="on-time data-value">${allReports.dailySummary.onTimeBreaks} (${allReports.dailySummary.onTimePercentage}%)</span></p>
+                <p>Over Breaks: <span class="over-break data-value">${allReports.dailySummary.overBreaks} (${allReports.dailySummary.overBreakPercentage}%)</span></p>
+                <p>Average Break Duration: <span class="data-value">${allReports.dailySummary.averageBreakDuration} mins</span></p>
+                ${alertNote}
             `;
 
-            // Render Employee Performance Report
             let employeeHtml = `
                 <div class="report-card">
                     <h3>Employee Performance Report</h3>
@@ -264,7 +372,6 @@ html, body {
             }
             employeeHtml += `</ul></div>`;
 
-            // Render Break Trend Analysis
             let trendsHtml = `
                 <div class="report-card">
                     <h3>Break Trend Analysis</h3>
@@ -275,15 +382,20 @@ html, body {
             }
             trendsHtml += `</ul></div>`;
 
-            dashboard.innerHTML = summaryHtml + employeeHtml + trendsHtml;
+            dashboard.innerHTML = '';
+            dashboard.appendChild(dailySummaryCard);
+            dashboard.innerHTML += employeeHtml + trendsHtml;
 
         } catch (e) {
             console.error("Error loading data:", e);
             dashboard.innerHTML = '<div class="loading-message over-break">Error loading data. Check the script URL and permissions.</div>';
         }
     }
-    
-    // --- Marquee & Clock Functions (Copied from index.html) ---
+
+    function applyFilters() {
+        loadBreakReports();
+    }
+
     function createFlipDigit(){const digit=document.createElement('div');digit.className='flip-digit';const front=document.createElement('span'); front.className='front'; front.textContent='0'; const back=document.createElement('span'); back.className='back'; back.textContent='0'; digit.appendChild(front); digit.appendChild(back); return digit;}
     const clockContainer=document.getElementById('flipClock');const digits=[];for(let i=0;i<4;i++){const digit=createFlipDigit(); clockContainer.appendChild(digit); if(i===1){const colon=document.createElement('span'); colon.textContent=':'; colon.style.margin='0 4px'; colon.style.fontSize='26px'; colon.style.color='#00ffcc'; colon.style.textShadow='0 0 6px #00ffcc,0 0 14px #00ffcc'; clockContainer.appendChild(colon);} digits.push(digit);}
     function updateClock(){const now=new Date(); let options={timeZone:'Asia/Manila',hour12:false,hour:'2-digit',minute:'2-digit'}; let timeStr=now.toLocaleTimeString('en-PH',options).replace(':',''); for(let i=0;i<digits.length;i++){const digitEl=digits[i]; const front=digitEl.querySelector('.front'); const back=digitEl.querySelector('.back'); if(front.textContent!==timeStr[i]){back.textContent=timeStr[i]; digitEl.classList.add('flip'); setTimeout(()=>{front.textContent=timeStr[i]; digitEl.classList.remove('flip');},500);}}}
@@ -309,18 +421,39 @@ html, body {
             console.error(e);
         }
     }
+    async function updateOverbreakCount(){
+        try {
+            const res = await fetch(BREAK_REPORT_URL);
+            const data = await res.json();
+            const overbreakCount = data.dailySummary.overBreaks;
+            const overbreakPercentage = parseFloat(data.dailySummary.overBreakPercentage);
+            
+            const counterEl = document.getElementById("overbreak-counter");
+            counterEl.textContent = `Overbreaks: ${overbreakCount}`;
+            
+            if (overbreakPercentage >= 30) {
+                counterEl.classList.add('overbreak-count-alert');
+            } else {
+                counterEl.classList.remove('overbreak-count-alert');
+            }
+        } catch(e) {
+            console.error("Error updating overbreak count:", e);
+        }
+    }
     
     // --- Initial Load and Interval Triggers ---
+    setInitialDates();
     loadBreakReports();
     updateDate();
     updateClock();
     updateMarquee();
+    updateOverbreakCount();
     
-    // Changed the refresh interval to 10 minutes (600,000 milliseconds)
     setInterval(loadBreakReports, 600000); 
     setInterval(updateDate,60000); 
     setInterval(updateClock,1000); 
     setInterval(updateMarquee,30000); 
+    setInterval(updateOverbreakCount, 30000); 
 </script>
 
 </body>
