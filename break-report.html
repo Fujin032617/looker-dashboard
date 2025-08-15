@@ -316,10 +316,11 @@ html, body {
     updateClock();
     updateMarquee();
     
-    setInterval(loadBreakReports, 30000); // Refreshes the break reports every 30 seconds
-    setInterval(updateDate,60000); // Updates the date every minute
-    setInterval(updateClock,1000); // Updates the clock every second
-    setInterval(updateMarquee,30000); // Refreshes the marquee every 30 seconds
+    // Changed the refresh interval to 10 minutes (600,000 milliseconds)
+    setInterval(loadBreakReports, 600000); 
+    setInterval(updateDate,60000); 
+    setInterval(updateClock,1000); 
+    setInterval(updateMarquee,30000); 
 </script>
 
 </body>
