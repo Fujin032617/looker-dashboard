@@ -315,7 +315,7 @@ html, body {
 </div>
 
 <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwjTQbsNIA0AEEZ_m6f7ZCa94-VAN0EWQY-QJ_wR2qViNeMF3ONFx9HuIV4Ex3gcFXV/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwOu3otBdXMmdnGN_5pmre6jAlAZG8UGiAU759pkIzFfZ3Pylk5SeISUKaEDAB0OV2N/exec";
 
     function getFormattedDate(date) {
         const year = date.getFullYear();
@@ -559,7 +559,7 @@ html, body {
     updateDate();
     updateClock();
 
-    setInterval(refreshAllDashboardData, 30000); // Consolidated refresh every 30 seconds
+    setInterval(refreshAllDashboardData, 300000); // Consolidated refresh every 5 minutes
     setInterval(updateDate,60000);
     setInterval(updateClock,1000);
 </script>
