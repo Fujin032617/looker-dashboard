@@ -306,7 +306,7 @@ html, body {
 </div>
 
 <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxV55OqYPdmkqM3y6hUE1KROymnM2P0gdhCDmL9df4xTFUFdon4Y9PWfur8foW3Jz7j/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYCwJR3n3g1TQS3BqMniFExMKJMHbDPG2m40HeoyoHnhwXN5TIsQmQG6QCMQLgj5L8/exec";
 
     function getFormattedDate(date) {
         const year = date.getFullYear();
@@ -366,7 +366,7 @@ html, body {
             for (const [name, stats] of Object.entries(allReports.employeePerformance)) {
                 employeeHtml += `<li>
                     <span><strong>${name}</strong></span>
-                    <span>Breaks: ${stats.totalBreaks} | Over: ${stats.overBreaks} | Avg Over: ${stats.averageOverBreakDuration} mins</span>
+                    <span>Breaks: ${stats.totalBreaks} | Over: ${stats.overBreaks} | Total Mins Over: ${stats.totalOverBreakMinutes} mins</span>
                 </li>`;
             }
             employeeHtml += `</ul></div>`;
