@@ -306,8 +306,7 @@ html, body {
 </div>
 
 <script>
-    const BREAK_REPORT_URL = "https://script.google.com/macros/s/AKfycbzgB8_zvSlKY8NAHNELK3NQvx80wJciZMt0s1PdnGFPhvlTK1e9fR-2WoCWyd50_FiI/exec";
-    const MARQUEE_URL = "https://script.google.com/macros/s/AKfycbzgB8_zvSlKY8NAHNELK3NQvx80wJciZMt0s1PdnGFPhvlTK1e9fR-2WoCWyd50_FiI/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxV55OqYPdmkqM3y6hUE1KROymnM2P0gdhCDmL9df4xTFUFdon4Y9PWfur8foW3Jz7j/exec";
 
     function getFormattedDate(date) {
         const year = date.getFullYear();
@@ -330,7 +329,7 @@ html, body {
         const startDate = document.getElementById('start-date').value;
         const endDate = document.getElementById('end-date').value;
 
-        let filteredURL = BREAK_REPORT_URL;
+        let filteredURL = SCRIPT_URL;
         const params = new URLSearchParams();
         if (startDate) params.append('startDate', startDate);
         if (endDate) params.append('endDate', endDate);
@@ -406,26 +405,24 @@ html, body {
     }
     async function updateMarquee(){
         try{
-            const res=await fetch(MARQUEE_URL, {
-                method: 'POST'
-            });
-            let msg=await res.text();
-            const marqueeEl=document.getElementById("breakMarquee");
+            const res = await fetch(SCRIPT_URL + '?type=marquee');
+            let msg = await res.text();
+            const marqueeEl = document.getElementById("breakMarquee");
             if(msg.toUpperCase().includes("OVERBREAK")){
-                marqueeEl.style.color="#ff4444";
-                marqueeEl.textContent="⚠️ "+msg;
-            }else{
-                marqueeEl.style.color="#ffcc00";
-                marqueeEl.textContent=msg;
+                marqueeEl.style.color = "#ff4444";
+                marqueeEl.textContent = "⚠️ " + msg;
+            } else {
+                marqueeEl.style.color = "#ffcc00";
+                marqueeEl.textContent = msg;
             }
         }catch(e){
-            document.getElementById("breakMarquee").textContent="Error loading break data.";
+            document.getElementById("breakMarquee").textContent = "Error loading break data.";
             console.error(e);
         }
     }
     async function updateOverbreakCount(){
         try {
-            const res = await fetch(BREAK_REPORT_URL);
+            const res = await fetch(SCRIPT_URL);
             const data = await res.json();
             const overbreakCount = data.dailySummary.overBreaks;
             const overbreakPercentage = parseFloat(data.dailySummary.overBreakPercentage);
