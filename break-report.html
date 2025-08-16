@@ -18,14 +18,13 @@ html, body {
     font-family: 'Poppins', sans-serif;
     color:white;
     overflow-x:hidden;
-    font-size: 15px; /* Slightly larger base font size */
+    font-size: 15px;
 }
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
 /* --- Top Bar & Navigation --- */
 .top-bar {
     position:relative;
@@ -34,30 +33,30 @@ html, body {
     justify-content:space-between;
     align-items:center;
     background:#1f1f1f;
-    padding:4px 12px; /* Increased padding */
+    padding:4px 12px;
     box-shadow:0 1px 5px rgba(0,0,0,0.5);
 }
 .top-bar .left-content {
     display: flex;
     align-items: center;
-    gap: 12px; /* Increased gap */
+    gap: 12px;
 }
 .top-bar h1 {
     margin:0;
-    font-size:15px; /* Increased font size */
+    font-size:15px;
 }
 .nav-bar {
     display:flex;
-    gap:6px; /* Increased gap */
+    gap:6px;
 }
 .nav-bar a {
     color:#00ffcc;
     text-decoration:none;
     font-weight:bold;
-    padding:6px 12px; /* Increased padding */
+    padding:6px 12px;
     border-radius:30px;
     transition:background-color 0.3s ease, transform 0.3s ease;
-    font-size: 13px; /* Increased font size */
+    font-size: 13px;
 }
 .nav-bar a:hover {
     background-color:rgba(0, 255, 204, 0.1);
@@ -72,15 +71,15 @@ html, body {
     text-align: right;
     display: flex;
     align-items: center;
-    gap: 12px; /* Increased gap */
+    gap: 12px;
 }
 /* --- Overbreak Counter --- */
 #overbreak-counter {
-    font-size: 13px; /* Increased font size */
+    font-size: 13px;
     font-weight: bold;
     color: #00ffcc;
     text-shadow: 0 0 3px #00ffcc, 0 0 7px #00ffcc;
-    padding: 6px 12px; /* Increased padding */
+    padding: 6px 12px;
     background: #222;
     border-radius: 30px;
 }
@@ -92,13 +91,13 @@ html, body {
 /* --- Flip Clock & Date (New) --- */
 .flip-clock {
     display:flex;
-    gap:4px; /* Increased gap */
+    gap:4px;
     align-items:center;
 }
 .flip-digit {
     position:relative;
-    width:32px; /* Increased width */
-    height:48px; /* Increased height */
+    width:32px;
+    height:48px;
     background:#222;
     border-radius:4px;
     overflow:hidden;
@@ -109,8 +108,8 @@ html, body {
     display:block;
     width:100%;
     height:100%;
-    line-height:48px; /* Increased line height */
-    font-size:20px; /* Increased font size */
+    line-height:48px;
+    font-size:20px;
     font-weight:bold;
     text-align:center;
     color:#00ffcc;
@@ -140,7 +139,7 @@ html, body {
     100% { transform: rotateX(0deg); }
 }
 #today-date {
-    font-size:13px; /* Increased font size */
+    font-size:13px;
     color:#00ffcc;
     text-shadow:0 0 3px #00ffcc, 0 0 7px #00ffcc;
     margin-bottom:1px;
@@ -151,10 +150,10 @@ html, body {
     width:100%;
     overflow:hidden;
     background:#1f1f1f;
-    padding:3px 0; /* Increased padding */
+    padding:3px 0;
     box-shadow:0 1px 3px rgba(0,0,0,0.5);
     z-index:1;
-    font-size: 13px; /* Increased font size */
+    font-size: 13px;
 }
 #breakMarquee {
     display:inline-block;
@@ -173,8 +172,8 @@ html, body {
 .filters {
     display: flex;
     justify-content: center;
-    gap: 12px; /* Increased gap */
-    padding: 12px; /* Increased padding */
+    gap: 12px;
+    padding: 12px;
     background: #1f1f1f;
     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
     flex-wrap: wrap;
@@ -182,15 +181,15 @@ html, body {
 }
 .filters label, .filters input, .filters select, .filters button {
     font-family: 'Poppins', sans-serif;
-    font-size: 13px; /* Increased font size */
+    font-size: 13px;
     color: white;
     background: #2a2a2a;
     border: 1px solid #444;
-    border-radius: 4px; /* Adjusted border radius */
-    padding: 6px 10px; /* Increased padding */
+    border-radius: 4px;
+    padding: 6px 10px;
 }
 .filters input, .filters select {
-    height: 30px; /* Increased height */
+    height: 30px;
 }
 .filters button {
     cursor: pointer;
@@ -199,7 +198,7 @@ html, body {
     font-weight: bold;
     border: none;
     transition: background-color 0.3s ease;
-    height: 30px; /* Increased height */
+    height: 30px;
 }
 .filters button:hover {
     background: #00e0b3;
@@ -208,17 +207,17 @@ html, body {
 /* --- Main Report Dashboard & Cards --- */
 .dashboard-grid {
     display: grid;
-    gap: 12px; /* Increased gap */
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted minmax for larger cards */
-    padding: 12px; /* Increased padding */
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: 12px;
 }
 .report-card {
     background: rgba(31, 31, 31, 0.85);
-    padding: 12px; /* Increased padding */
-    border-radius: 6px; /* Adjusted border radius */
+    padding: 12px;
+    border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     transition: border 0.3s ease, box-shadow 0.3s ease;
-    font-size: 13px; /* Increased font size */
+    font-size: 13px;
 }
 .report-card.overbreak-alert {
     border: 1px solid #ff4444;
@@ -232,12 +231,12 @@ html, body {
     margin-top: 0;
     color: #4CAF50;
     border-bottom: 1px solid #333;
-    padding-bottom: 6px; /* Increased padding */
-    font-size: 16px; /* Increased font size */
+    padding-bottom: 6px;
+    font-size: 16px;
 }
 .report-card p {
-    margin: 4px 0; /* Increased margin */
-    font-size: 13px; /* Increased font size */
+    margin: 4px 0;
+    font-size: 13px;
 }
 .report-card ul {
     list-style: none;
@@ -245,13 +244,13 @@ html, body {
 }
 .report-card li {
     background: #2a2a2a;
-    padding: 6px; /* Increased padding */
-    border-radius: 4px; /* Adjusted border radius */
-    margin-bottom: 4px; /* Increased margin */
+    padding: 6px;
+    border-radius: 4px;
+    margin-bottom: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13px; /* Increased font size */
+    font-size: 13px;
 }
 .report-card li:last-child {
     margin-bottom: 0;
@@ -270,14 +269,14 @@ html, body {
 .loading-message {
     text-align: center;
     color: #888;
-    font-size: 15px; /* Increased font size */
-    padding: 35px; /* Increased padding */
+    font-size: 15px;
+    padding: 35px;
 }
 /* --- Responsive --- */
 @media (max-width: 900px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
-        padding: 8px; /* Increased padding */
+        padding: 8px;
     }
 }
 </style>
@@ -308,7 +307,7 @@ html, body {
     <input type="date" id="start-date">
     <label for="end-date">End Date:</label>
     <input type="date" id="end-date">
-    <button onclick="applyFilters()">Apply Filters</button>
+    <button onclick="refreshAllDashboardData()">Apply Filters</button>
 </div>
 
 <div id="dashboard" class="dashboard-grid">
@@ -316,7 +315,7 @@ html, body {
 </div>
 
 <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzYvjeYznRPYsCfnwheF9jP5taLpY84fIodfvcPOrcJVGIfDFE7nln4MbaHlHsRsOn_/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwjTQbsNIA0AEEZ_m6f7ZCa94-VAN0EWQY-QJ_wR2qViNeMF3ONFx9HuIV4Ex3gcFXV/exec";
 
     function getFormattedDate(date) {
         const year = date.getFullYear();
@@ -332,102 +331,152 @@ html, body {
         document.getElementById('end-date').value = formattedToday;
     }
 
-    async function loadBreakReports() {
+    async function refreshAllDashboardData() {
         const dashboard = document.getElementById("dashboard");
         dashboard.innerHTML = '<div class="loading-message">Loading reports...</div>';
-
+        
         const startDate = document.getElementById('start-date').value;
         const endDate = document.getElementById('end-date').value;
 
         const params = new URLSearchParams();
         if (startDate) params.append('startDate', startDate);
         if (endDate) params.append('endDate', endDate);
+        params.append('type', 'main');
 
-        const mainURL = SCRIPT_URL + '?' + params.toString();
-        const leaderboardURL = SCRIPT_URL + '?type=leaderboard&' + params.toString();
+        const requestURL = SCRIPT_URL + '?' + params.toString();
 
         try {
-            const [mainRes, leaderboardRes] = await Promise.all([
-                fetch(mainURL),
-                fetch(leaderboardURL)
-            ]);
-            const mainReports = await mainRes.json();
-            const leaderboardData = await leaderboardRes.json();
-
-            // --- Daily Summary Card ---
-            const dailySummaryCard = document.createElement('div');
-            dailySummaryCard.className = 'report-card';
-            const overbreakPercentage = parseFloat(mainReports.dailySummary.overBreakPercentage);
-            if (overbreakPercentage >= 30) {
-                dailySummaryCard.classList.add('overbreak-alert');
-            } else {
-                dailySummaryCard.classList.remove('overbreak-alert');
-            }
-
-            const alertNote = overbreakPercentage >= 30 ? '<br><small style="color:red; font-weight:bold; font-size: 11px;">* Overbreak % ≥ 30%</small>' : '';
-
-            dailySummaryCard.innerHTML = `
-                <h3>Daily Break Adherence</h3>
-                <p>Total Breaks: <span class="data-value">${mainReports.dailySummary.totalBreaks}</span></p>
-                <p>On-Time: <span class="on-time data-value">${mainReports.dailySummary.onTimeBreaks} (${mainReports.dailySummary.onTimePercentage}%)</span></p>
-                <p>Over: <span class="over-break data-value">${mainReports.dailySummary.overBreaks} (${mainReports.dailySummary.overBreakPercentage}%)</span></p>
-                <p>Avg Duration: <span class="data-value">${mainReports.dailySummary.averageBreakDuration} mins</span></p>
-                ${alertNote}
-            `;
-
-            // --- Employee Performance Card ---
-            let employeeHtml = `
-                <div class="report-card">
-                    <h3>Employee Performance</h3>
-                    <p style="margin-bottom: 6px;">Select employee:</p>
-                    <select id="employee-select" onchange="loadEmployeeReport()" style="font-size: 13px; padding: 4px;">
-                        <option value="">-- All --</option>`;
-            for (const name in mainReports.employeePerformance) {
-                employeeHtml += `<option value="${name}">${name}</option>`;
-            }
-            employeeHtml += `</select>
-                    <div id="employee-details" style="margin-top: 6px; font-size: 11px;"></div>
-                    <ul id="employee-list" style="margin-top: 12px;">`;
-            for (const [name, stats] of Object.entries(mainReports.employeePerformance)) {
-                employeeHtml += `<li>
-                    <span><strong>${name}</strong></span>
-                    <span>Breaks: ${stats.totalBreaks} | Over: ${stats.overBreaks} | Total Over: ${stats.totalOverBreakMinutes} mins</span>
-                </li>`;
-            }
-            employeeHtml += `</ul></div>`;
-
-            // --- Leaderboard Card ---
-            let leaderboardHtml = `
-                <div class="report-card">
-                    <h3>Overbreak Leaderboard 🏆</h3>
-                    <p style="font-size: 11px; margin-bottom: 6px;">Top agents (Total Over Minutes)</p>
-                    <ul>`;
-            leaderboardData.slice(0, 5).forEach((item, index) => {
-                leaderboardHtml += `<li style="font-size: 13px;">
-                    <span><strong>#${index + 1}</strong> ${item.name}</span>
-                    <span class="over-break data-value">${item.totalOverMinutes} mins</span>
-                </li>`;
-            });
-            leaderboardHtml += `</ul></div>`;
-
-            // --- Break Trends Card ---
-            let trendsHtml = `
-                <div class="report-card">
-                    <h3>Break Trend Analysis</h3>
-                    <p style="font-size: 11px; margin-bottom: 6px;">Avg Duration by Type:</p>
-                    <ul>`;
-            for (const [type, stats] of Object.entries(mainReports.breakTrends.breakTypeBreakdown)) {
-                trendsHtml += `<li style="font-size: 13px;"><span><strong>${type}:</strong></span> <span class="data-value">${stats.averageDuration} mins</span></li>`;
-            }
-            trendsHtml += `</ul></div>`;
-
-            dashboard.innerHTML = '';
-            dashboard.appendChild(dailySummaryCard);
-            dashboard.innerHTML += leaderboardHtml + employeeHtml + trendsHtml;
+            const res = await fetch(requestURL);
+            const data = await res.json();
+            
+            updateDashboardUI(data.dashboard, data.leaderboard);
+            updateMarqueeUI(data.marquee);
+            updateOverbreakCountUI(data.dashboard.dailySummary);
 
         } catch (e) {
             console.error("Error loading data:", e);
             dashboard.innerHTML = '<div class="loading-message over-break" style="font-size: 13px;">Error loading data. Check the script URL and permissions.</div>';
+        }
+    }
+
+    function updateDashboardUI(mainReports, leaderboardData) {
+        const dashboard = document.getElementById("dashboard");
+        dashboard.innerHTML = ''; // Clear existing content
+
+        // --- Daily Summary Card ---
+        const dailySummaryCard = document.createElement('div');
+        dailySummaryCard.className = 'report-card';
+        const overbreakPercentage = parseFloat(mainReports.dailySummary.overBreakPercentage);
+        if (overbreakPercentage >= 30) {
+            dailySummaryCard.classList.add('overbreak-alert');
+        } else {
+            dailySummaryCard.classList.remove('overbreak-alert');
+        }
+        const alertNote = overbreakPercentage >= 30 ? '<br><small style="color:red; font-weight:bold; font-size: 11px;">* Overbreak % ≥ 30%</small>' : '';
+        dailySummaryCard.innerHTML = `
+            <h3>Daily Break Adherence</h3>
+            <p>Total Breaks: <span class="data-value">${mainReports.dailySummary.totalBreaks}</span></p>
+            <p>On-Time: <span class="on-time data-value">${mainReports.dailySummary.onTimeBreaks} (${mainReports.dailySummary.onTimePercentage}%)</span></p>
+            <p>Over: <span class="over-break data-value">${mainReports.dailySummary.overBreaks} (${mainReports.dailySummary.overBreakPercentage}%)</span></p>
+            <p>Avg Duration: <span class="data-value">${mainReports.dailySummary.averageBreakDuration} mins</span></p>
+            ${alertNote}
+        `;
+        dashboard.appendChild(dailySummaryCard);
+
+        // --- Combined Leaderboard Card ---
+        const leaderboardCard = document.createElement('div');
+        leaderboardCard.className = 'report-card';
+        leaderboardCard.innerHTML = `
+            <h3>Leaderboards</h3>
+            <div style="display:flex; justify-content:space-around; gap:10px;">
+                <div style="flex:1;">
+                    <h4 style="margin-top:0; font-size:14px;">Overbreak 🏆</h4>
+                    <p style="font-size:11px; margin-bottom:6px;">Top agents (Total Over Minutes)</p>
+                    <ul id="overbreak-list"></ul>
+                </div>
+                <div style="flex:1;">
+                    <h4 style="margin-top:0; font-size:14px;">Early Return 🚀</h4>
+                    <p style="font-size:11px; margin-bottom:6px;">Top agents (Total Minutes Saved)</p>
+                    <ul id="early-return-list"></ul>
+                </div>
+            </div>
+        `;
+        dashboard.appendChild(leaderboardCard);
+
+        const overbreakListEl = document.getElementById('overbreak-list');
+        const earlyReturnListEl = document.getElementById('early-return-list');
+
+        const overbreakLeaderboard = leaderboardData.sort((a, b) => b.totalOverMinutes - a.totalOverMinutes);
+        overbreakLeaderboard.slice(0, 5).forEach((item, index) => {
+            const li = document.createElement('li');
+            li.style.fontSize = '13px';
+            li.innerHTML = `<span><strong>#${index + 1}</strong> ${item.name}</span> <span class="over-break data-value">${item.totalOverMinutes} mins</span>`;
+            overbreakListEl.appendChild(li);
+        });
+
+        const earlyReturnLeaderboard = leaderboardData.sort((a, b) => b.totalEarlyMinutes - a.totalEarlyMinutes);
+        earlyReturnLeaderboard.slice(0, 5).forEach((item, index) => {
+            const li = document.createElement('li');
+            li.style.fontSize = '13px';
+            li.innerHTML = `<span><strong>#${index + 1}</strong> ${item.name}</span> <span class="on-time data-value">${item.totalEarlyMinutes} mins</span>`;
+            earlyReturnListEl.appendChild(li);
+        });
+
+        // --- Employee Performance Card ---
+        let employeeHtml = `
+            <div class="report-card">
+                <h3>Employee Performance</h3>
+                <p style="margin-bottom: 6px;">Select employee:</p>
+                <select id="employee-select" onchange="loadEmployeeReport()" style="font-size: 13px; padding: 4px;">
+                    <option value="">-- All --</option>`;
+        for (const name in mainReports.employeePerformance) {
+            employeeHtml += `<option value="${name}">${name}</option>`;
+        }
+        employeeHtml += `</select>
+                <div id="employee-details" style="margin-top: 6px; font-size: 11px;"></div>
+                <ul id="employee-list" style="margin-top: 12px;">`;
+        for (const [name, stats] of Object.entries(mainReports.employeePerformance)) {
+            employeeHtml += `<li>
+                <span><strong>${name}</strong></span>
+                <span>Breaks: ${stats.totalBreaks} | Over: ${stats.overBreaks} | Total Over: ${stats.totalOverBreakMinutes} mins</span>
+            </li>`;
+        }
+        employeeHtml += `</ul></div>`;
+        dashboard.innerHTML += employeeHtml;
+
+        // --- Break Trends Card ---
+        let trendsHtml = `
+            <div class="report-card">
+                <h3>Break Trend Analysis</h3>
+                <p style="font-size: 11px; margin-bottom: 6px;">Avg Duration by Type:</p>
+                <ul>`;
+        for (const [type, stats] of Object.entries(mainReports.breakTrends.breakTypeBreakdown)) {
+            trendsHtml += `<li style="font-size: 13px;"><span><strong>${type}:</strong></span> <span class="data-value">${stats.averageDuration} mins</span></li>`;
+        }
+        trendsHtml += `</ul></div>`;
+        dashboard.innerHTML += trendsHtml;
+    }
+
+    function updateMarqueeUI(msg) {
+        const marqueeEl = document.getElementById("breakMarquee");
+        if(msg.toUpperCase().includes("OVERBREAK")){
+            marqueeEl.style.color = "#ff4444";
+            marqueeEl.textContent = "⚠️ " + msg;
+        } else {
+            marqueeEl.style.color = "#ffcc00";
+            marqueeEl.textContent = msg;
+        }
+    }
+
+    function updateOverbreakCountUI(dailySummary) {
+        const overbreakCount = dailySummary.overBreaks;
+        const overbreakPercentage = parseFloat(dailySummary.overBreakPercentage);
+        const counterEl = document.getElementById("overbreak-counter");
+        counterEl.textContent = `Overbreaks: ${overbreakCount}`;
+        if (overbreakPercentage >= 30) {
+            counterEl.classList.add('overbreak-count-alert');
+        } else {
+            counterEl.classList.remove('overbreak-count-alert');
         }
     }
 
@@ -439,12 +488,9 @@ html, body {
             detailsDiv.innerHTML = '';
             return;
         }
-
         detailsDiv.innerHTML = '<p style="text-align:center; font-size: 11px;">Loading...</p>';
-
         const startDate = document.getElementById('start-date').value;
         const endDate = document.getElementById('end-date').value;
-
         const params = new URLSearchParams();
         params.append('type', 'employee');
         params.append('name', employeeName);
@@ -454,13 +500,14 @@ html, body {
         try {
             const res = await fetch(SCRIPT_URL + '?' + params.toString());
             const data = await res.json();
-
             let html = `<h4 style="font-size: 13px; margin-top: 0; margin-bottom: 6px;">${employeeName}'s Breaks</h4>`;
             html += `
                 <style>
                     .employee-report-table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 11px; }
                     .employee-report-table th, .employee-report-table td { border: 1px solid #444; padding: 6px; text-align: left; }
                     .employee-report-table th { background-color: #333; font-size: 11px; }
+                    .employee-report-table .on-time { color: #4CAF50; }
+                    .employee-report-table .over-break { color: #FF6347; }
                 </style>
                 <table class="employee-report-table">
                     <thead>
@@ -470,38 +517,31 @@ html, body {
                             <th>Type</th>
                             <th>Duration</th>
                             <th>Status</th>
-                            <th>Over Mins</th>
                         </tr>
                     </thead>
                     <tbody>`;
-
             if (data.breaks && data.breaks.length > 0) {
                 data.breaks.forEach(b => {
                     const statusClass = b.status === "Over Break" ? "over-break" : "on-time";
+                    const statusText = b.status === "Over Break" ? `${b.minutesOver} mins over` : `${b.minutesEarly} mins early`;
                     html += `
                         <tr>
                             <td>${b.startTime}</td>
                             <td>${b.endTime}</td>
                             <td>${b.breakType}</td>
                             <td>${b.duration} mins</td>
-                            <td class="${statusClass}">${b.status}</td>
-                            <td class="${statusClass}">${b.minutesOver} mins</td>
+                            <td class="${statusClass}">${statusText}</td>
                         </tr>`;
                 });
             } else {
-                html += `<tr><td colspan="6" style="text-align:center;">No breaks found in this range.</td></tr>`;
+                html += `<tr><td colspan="5" style="text-align:center;">No breaks found in this range.</td></tr>`;
             }
-
             html += `</tbody></table>`;
             detailsDiv.innerHTML = html;
         } catch(e) {
             console.error("Error loading employee report:", e);
             detailsDiv.innerHTML = '<p style="color:red; font-size: 11px;">Error loading report.</p>';
         }
-    }
-
-    function applyFilters() {
-        loadBreakReports();
     }
 
     function createFlipDigit(){const digit=document.createElement('div');digit.className='flip-digit';const front=document.createElement('span'); front.className='front'; front.textContent='0'; const back=document.createElement('span'); back.className='back'; back.textContent='0'; digit.appendChild(front); digit.appendChild(back); return digit;}
@@ -512,56 +552,16 @@ html, body {
         const options={timeZone:'Asia/Manila',weekday:'long',year:'numeric',month:'long',day:'numeric'};
         document.getElementById('today-date').textContent=now.toLocaleDateString('en-PH',options);
     }
-    async function updateMarquee(){
-        try{
-            const res = await fetch(SCRIPT_URL + '?type=marquee');
-            let msg = await res.text();
-            const marqueeEl = document.getElementById("breakMarquee");
-            if(msg.toUpperCase().includes("OVERBREAK")){
-                marqueeEl.style.color = "#ff4444";
-                marqueeEl.textContent = "⚠️ " + msg;
-            } else {
-                marqueeEl.style.color = "#ffcc00";
-                marqueeEl.textContent = msg;
-            }
-        }catch(e){
-            document.getElementById("breakMarquee").textContent = "Error loading break data.";
-            console.error(e);
-        }
-    }
-    async function updateOverbreakCount(){
-        try {
-            const res = await fetch(SCRIPT_URL);
-            const data = await res.json();
-            const overbreakCount = data.dailySummary.overBreaks;
-            const overbreakPercentage = parseFloat(data.dailySummary.overBreakPercentage);
-
-            const counterEl = document.getElementById("overbreak-counter");
-            counterEl.textContent = `Overbreaks: ${overbreakCount}`;
-
-            if (overbreakPercentage >= 30) {
-                counterEl.classList.add('overbreak-count-alert');
-            } else {
-                counterEl.classList.remove('overbreak-count-alert');
-            }
-        } catch(e) {
-            console.error("Error updating overbreak count:", e);
-        }
-    }
 
     // --- Initial Load and Interval Triggers ---
     setInitialDates();
-    loadBreakReports();
+    refreshAllDashboardData();
     updateDate();
     updateClock();
-    updateMarquee();
-    updateOverbreakCount();
 
-    setInterval(loadBreakReports, 600000);
+    setInterval(refreshAllDashboardData, 30000); // Consolidated refresh every 30 seconds
     setInterval(updateDate,60000);
     setInterval(updateClock,1000);
-    setInterval(updateMarquee,30000);
-    setInterval(updateOverbreakCount, 30000);
 </script>
 
 </body>
