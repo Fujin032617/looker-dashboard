@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Live Dashboard with Flip Clock, Marquee & Particles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
 /* --- General Body & Typography --- */
 html, body {
@@ -286,8 +289,10 @@ updateClock();
 // Marquee with Overbreak alert
 async function updateMarquee(){
     try{
-        const res=await fetch("https://script.google.com/macros/s/AKfycbzteR_7lMnSwl6QS8eHR63kvsneAsiO4gPc4GXmRo-1_IIkNdKnoSYO_qLX8k_LAmlf/exec");
-        let msg=await res.text();
+        const res=await fetch("https://script.google.com/macros/s/AKfycbw4p5MOhc_tSpsnL4bSX6odEnTlHIY_gplglBUsqc1gHmT0W9tptaGtsuQgIEzF8OU_/exec?type=main");
+        const data = await res.json();
+        const msg = data.marquee; // The correct way to get the data
+        
         const marqueeEl=document.getElementById("breakMarquee");
         if(msg.toUpperCase().includes("OVERBREAK")){
             marqueeEl.style.color="#ff4444";
